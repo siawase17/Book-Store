@@ -2,7 +2,7 @@ import React from 'react';
 import { styled } from 'styled-components';
 import { ButtonSheme, ButtonSize } from '../../style/theme';
 
-interface Props {
+interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     children: React.ReactNode;
     size: ButtonSize;
     scheme: ButtonSheme;
@@ -20,7 +20,7 @@ const Button = ({ children, size, scheme, disabled, isLoading }: Props) => {
 
 const ButtonStyle = styled.button<Omit<Props, "children">> `
     font-size: ${({ theme, size }) => theme.heading[size].fontSize};
-    padding: ${({ theme, size }) => theme.heading[size].padding};
+    padding: ${({ theme, size }) => theme.button[size].padding};
     color: ${({ theme, scheme }) => theme.buttonScheme[scheme].color};
     background-color: ${({ theme, scheme }) => theme.buttonScheme[scheme].backgroundColor};
     border: 0;

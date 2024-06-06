@@ -34,7 +34,7 @@ const Header = () => {
                         <Link to="/login"><FaSignInAlt />로그인</Link>
                     </li>
                     <li>
-                        <Link to="/singup"><FaRegUser />회원가입</Link>
+                        <Link to="/signup"><FaRegUser />회원가입</Link>
                     </li>
                 </ul>
             </nav>
