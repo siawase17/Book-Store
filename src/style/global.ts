@@ -29,4 +29,21 @@ export const GlobalStyle = createGlobalStyle<Props>`
         box-sizing: border-box;
         font-family: 'GangwonEdu_OTFBoldA', sans-serif;
     }
+
+    /* 모든 요소에서 커서 제거 */
+    *:not(input):not(textarea) {
+    cursor: default;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    }
+
+    /* 입력 요소와 텍스트 영역에서는 기본 커서 유지 */
+    input,
+    textarea {
+    cursor: text;
+    user-select: text;
+    }
 `;
