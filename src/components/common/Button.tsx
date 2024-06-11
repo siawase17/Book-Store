@@ -10,9 +10,9 @@ interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
     isLoading?: boolean;
 }
 
-const Button = ({ children, size, scheme, disabled, isLoading }: Props) => {
+const Button = ({ children, size, scheme, disabled, isLoading, ...props }: Props) => {
     return (
-        <ButtonStyle size={size} scheme={scheme} disabled={disabled} isLoading={isLoading}>
+        <ButtonStyle size={size} scheme={scheme} disabled={disabled} isLoading={isLoading} {...props}>
             {children}
         </ButtonStyle>
     )
@@ -21,6 +21,7 @@ const Button = ({ children, size, scheme, disabled, isLoading }: Props) => {
 const ButtonStyle = styled.button<Omit<Props, "children">> `
     font-size: ${({ theme, size }) => theme.heading[size].fontSize};
     padding: ${({ theme, size }) => theme.button[size].padding};
+    padding-top: 12px;
     color: ${({ theme, scheme }) => theme.buttonScheme[scheme].color};
     background-color: ${({ theme, scheme }) => theme.buttonScheme[scheme].backgroundColor};
     border: 0;
