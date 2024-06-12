@@ -1,4 +1,4 @@
 export interface Pagination {
-    page: number;
-    totalCount: number;
+    cur_page: number;
+    totalBook_cnt: number;
 };

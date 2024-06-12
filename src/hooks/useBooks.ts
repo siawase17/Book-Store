@@ -11,8 +11,8 @@ export const useBooks = () => {
 
     const [books, setBooks] = useState<Book[]>([]);
     const [pagination, setPagination] = useState<Pagination>({
-        totalCount: 0,
-        page: 1,
+        totalBook_cnt: 0,
+        cur_page: 1,
     });
     const [isEmpty, setIsEmpty] = useState(true);
 

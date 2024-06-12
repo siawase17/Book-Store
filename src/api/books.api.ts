@@ -17,13 +17,14 @@ interface FetchBooksResponse {
 export const fetchBooks = async (params: FetchBooksParams) => {
     try {
         const response = await httpClient.get<FetchBooksResponse>('/books', { params: params });
+        console.log(response.data)
         return response.data;
     } catch (error) {
         return {
             books: [],
             pagination: {
-                totalCount: 0,
-                page: 1,
+                totalBook_cnt: 0,
+                cur_page: 1,
             }
         }
     };
