@@ -68,10 +68,11 @@ const BookItemStyle = styled.div`
         }
         .likes {
             display: inline-flex;
+            justify-content: center;
             align-items: center;
-            gap: 4px;
+            gap: 5px;
             font-size: 0.875rem;
-            color: ${({ theme }) => theme.color.primary};
+            /* color: ${({ theme }) => theme.color.primary}; */
             margin: 0 0 4px 0;
             font-weight: 700;
             border: 1px solid ${({ theme }) => theme.color.border};
@@ -82,7 +83,11 @@ const BookItemStyle = styled.div`
             right: 16px;
 
             svg {
-                color: ${({ theme }) => theme.color.primary};
+                /* color: ${({ theme }) => theme.color.primary}; */
+            }
+
+            span {
+                padding-top: 2.7px;
             }
         }
     }

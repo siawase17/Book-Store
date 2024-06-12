@@ -4,8 +4,8 @@ import { httpClient } from "./http";
 
 interface FetchBooksParams {
     category_id?: number;
-    news?: boolean;
-    currentPage?: number;
+    is_new?: boolean;
+    page?: number;
     limit: number;
 };
 
@@ -23,7 +23,7 @@ export const fetchBooks = async (params: FetchBooksParams) => {
             books: [],
             pagination: {
                 totalCount: 0,
-                currentPage: 1,
+                page: 1,
             }
         }
     };

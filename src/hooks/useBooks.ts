@@ -12,8 +12,9 @@ export const useBooks = () => {
     const [books, setBooks] = useState<Book[]>([]);
     const [pagination, setPagination] = useState<Pagination>({
         totalCount: 0,
-        currentPage: 1,
+        page: 1,
     });
+    const [isEmpty, setIsEmpty] = useState(true);
 
     useEffect(() => {
         const params = new URLSearchParams(location.search);
@@ -21,15 +22,16 @@ export const useBooks = () => {
         fetchBooks({
             category_id: params.get(QUERYSTRING.CATEGORY_ID) ?
                 Number(params.get(QUERYSTRING.CATEGORY_ID)) : undefined,
-            news: params.get(QUERYSTRING.NEWS) ? true : undefined,
-            currentPage: params.get(QUERYSTRING.PAGE) ?
+            is_new: params.get(QUERYSTRING.NEWS) ? true : undefined,
+            page: params.get(QUERYSTRING.PAGE) ?
                 Number(params.get(QUERYSTRING.PAGE)) : 1,
             limit: LIMIT,
-        }).then((res) => {
-            setBooks(res.books);
-            setPagination(res.pagination);
+        }).then(({ books, pagination }) => {
+            setBooks(books);
+            setPagination(pagination);
+            setIsEmpty(books.length === 0);
         });
     }, [location.search]);
 
-    return { books, pagination };
+    return { books, pagination, isEmpty };
 };
