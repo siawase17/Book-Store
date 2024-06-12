@@ -20,7 +20,9 @@ const Books = () => {
                 </div>
                 {!isEmpty && <BooksList books={books} />}
                 {isEmpty && <BooksEmpty />}
-                {!isEmpty && <Pagination pagination={pagination} />}
+                {!isEmpty && <div className='paginationWrapper'>
+                    <Pagination pagination={pagination} />
+                </div>}
             </BooksStyle>
         </>
     )
@@ -36,6 +38,11 @@ const BooksStyle = styled.div`
         display: flex;
         justify-content: space-between;
         padding: 20px 0;
+    }
+
+    .paginationWrapper {
+        display: flex;
+        justify-content: center;
     }
 `;
 
