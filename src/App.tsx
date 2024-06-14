@@ -8,6 +8,7 @@ import Signup from "./pages/Signup";
 import ResetPwd from "./pages/ResetPwd";
 import Login from "./pages/Login";
 import Books from "./pages/Books";
+import BookDetail from "./pages/BookDetail";
 
 const router = createBrowserRouter([
   {
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: '/login',
     element: <Layout><Login /></Layout>,
+  },
+  {
+    path: '/books/:bookId',
+    element: <Layout><BookDetail /></Layout>
   }
 ])
 

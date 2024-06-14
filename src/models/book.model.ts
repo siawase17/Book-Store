@@ -12,10 +12,10 @@ export interface Book {
     contents: string;
     price: number;
     likes: number;
-    pubDate: string;
+    pub_date: string;
 };
 
 export interface BookDetail extends Book {
-    categoryName: string;
-    liked: boolean;
+    category_name: string;
+    is_like: boolean;
 };

@@ -46,4 +46,9 @@ export const GlobalStyle = createGlobalStyle<Props>`
     cursor: text;
     user-select: text;
     }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 `;
