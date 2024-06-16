@@ -19,9 +19,10 @@ const CheckIconButtonStyle = styled.button`
     border: 0;
     cursor: pointer;
 
-    svg: {
-        width: 24px;
-        height: 24px;
+    svg {
+        width: 22px;
+        height: 22px;
+        margin-top: 3px;
     }
 `
 

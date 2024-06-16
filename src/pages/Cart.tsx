@@ -6,8 +6,14 @@ import { useMemo, useState } from "react";
 import Empty from "../components/common/Empty";
 import { FaShoppingCart } from 'react-icons/fa';
 import CartSummary from "../components/cart/CartSummary";
+import Button from "../components/common/Button";
+import { useAlert } from "../hooks/useAlert";
+import { OrderSheet } from "../models/order.model";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
+    const { showAlert, showConfirm } = useAlert();
+    const navigate = useNavigate();
     const { carts, deleteCartItem, isEmpty } = useCart();
     const [checkedItems, setCheckedItems] = useState<number[]>([]);
     const handleCheckItem = (id: number) => {
@@ -40,6 +46,23 @@ const Cart = () => {
         }, 0)
     }, [carts, checkedItems]);
 
+    const handleOrder = () => {
+        if (checkedItems.length === 0) {
+            showAlert('주문할 상품을 선택해 주세요.')
+            return;
+        };
+
+        const orderData: Omit<OrderSheet, 'delivery'> = {
+            items: checkedItems,
+            total_price: totalPrice,
+            total_quantity: totalQuantity,
+            book_title: carts[0].title
+        }
+        showConfirm("주문하시겠습니까?", () => {
+            navigate('/order', { state: orderData });
+        })
+    }
+
     return (
         <>
             <Title size="large">장바구니</Title>
@@ -58,10 +81,13 @@ const Cart = () => {
                             ))}
                         </div>
                         <div className="summary">
-                        <CartSummary
-                            totalQuantity={totalQuantity}
-                            totalPrice={totalPrice}
-                        />
+                            <CartSummary
+                                totalQuantity={totalQuantity}
+                                totalPrice={totalPrice}
+                            />
+                            <Button size="medium" scheme="primary" onClick={handleOrder}>
+                                주문 하기
+                            </Button>
                         </div>
                     </>
                 )}
@@ -92,6 +118,8 @@ const CartStyle = styled.div`
 
     .summary {
         display: flex;
+        flex-direction: column;
+        gap: 24px;
     }
 `;
 

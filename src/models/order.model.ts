@@ -1,10 +1,22 @@
 export interface Order {
     id: number;
-    createdAt: string;
+    created_at: string;
     address: string;
     receiver: string;
     contact: string;
-    bookTitle: string;
-    totalQuantity: number;
-    totalPrice: number;
+    book_title: string;
+    total_quantity: number;
+    total_price: number;
 };
+
+export interface OrderSheet {
+    items: number[];
+    total_quantity: number;
+    total_price: number;
+    book_title: string;
+    delivery: {
+        address: string;
+        receiver: string;
+        contact: string;
+    };
+}
