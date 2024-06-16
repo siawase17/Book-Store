@@ -9,6 +9,7 @@ import ResetPwd from "./pages/ResetPwd";
 import Login from "./pages/Login";
 import Books from "./pages/Books";
 import BookDetail from "./pages/BookDetail";
+import Cart from "./pages/Cart";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
   {
     path: '/books/:bookId',
     element: <Layout><BookDetail /></Layout>
+  },
+  {
+    path: '/cart',
+    element: <Layout><Cart /></Layout>
   }
 ])
 
