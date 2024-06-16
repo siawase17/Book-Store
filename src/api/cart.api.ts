@@ -7,8 +7,18 @@ interface AddCartParams {
 };
 
 export const addCart = async (params: AddCartParams) => {
-    const response = await httpClient.post('/cart', params);
-    return response.data;
+    try {
+        const response = await httpClient.post('/cart', params);
+        return response.data;
+    } catch (error: any) {
+        if (error.response) {
+            console.error(`Request failed with status code ${error.response.status}`);
+            console.error(error.response.data);
+        } else {
+            console.error(error.message);
+        }
+        throw error;
+    }
 };
 
 export const fetchCart = async () => {

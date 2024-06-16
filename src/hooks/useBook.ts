@@ -3,6 +3,7 @@ import { BookDetail } from "../models/book.model";
 import { fetchBook, likeBook, removeBook } from "../api/books.api";
 import { useAuthStore } from "../store/authStore";
 import { useAlert } from "./useAlert";
+import { addCart } from "../api/cart.api";
 
 export const useBook = (bookId: string | undefined) => {
     const [book, setBook] = useState<BookDetail | null>(null);
@@ -43,5 +44,17 @@ export const useBook = (bookId: string | undefined) => {
         };
     };
 
-    return { book, likeToggle };
+    const [cartAdded, setCartAdded] = useState<boolean>(false);
+    const addToCart = (quantity: number) => {
+        if (!book) return;
+
+        addCart({ book_id: book.id, quantity: quantity }).then(() => {
+            setCartAdded(true);
+            setTimeout(() => {
+                setCartAdded(false)
+            }, 5000)
+        });
+    };
+
+    return { book, likeToggle, addToCart, cartAdded };
 };
