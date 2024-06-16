@@ -7,15 +7,16 @@ import { BookDetail as IBookDetail } from '../models/book.model';
 import { formatDate, formatNumber } from '../utils/format';
 import { Link } from 'react-router-dom';
 import EllipsisBox from '../components/common/EllipsisBox';
+import LikeButton from '../components/book/LikeButton';
 
 const bookInfoList = [
     {
         label: '카테고리',
         key: 'category_name',
-        filter: (book: IBookDetail) => 
-                <Link to={`/books?category_id=${book.category_id}`}>
-                    {book.category_name}
-                </Link>,
+        filter: (book: IBookDetail) =>
+            <Link to={`/books?category_id=${book.category_id}`}>
+                {book.category_name}
+            </Link>,
     },
     {
         label: '포맷',
@@ -47,7 +48,7 @@ const bookInfoList = [
 
 const BookDetail = () => {
     const { bookId } = useParams();
-    const { book } = useBook(bookId);
+    const { book, likeToggle } = useBook(bookId);
 
     if (!book) return null;
 
@@ -67,6 +68,9 @@ const BookDetail = () => {
                         </dl>
                     ))}
                     <p className="summary">&lt;책 요약&gt;<br />{book.summary}</p>
+                    <div className="like">
+                        <LikeButton book={book} onClick={likeToggle} />
+                    </div>
                 </div>
             </header>
             <div className="content">
@@ -106,10 +110,10 @@ const BookDetailStyle = styled.div`
                 margin: 0;
                 dt {
                     width: 80px;
-                    color: ${({theme}) => theme.color.secondary};
+                    color: ${({ theme }) => theme.color.secondary};
                 }
                 a {
-                    color: ${({theme}) => theme.color.primary};
+                    color: ${({ theme }) => theme.color.primary};
                 }
             }
         }
