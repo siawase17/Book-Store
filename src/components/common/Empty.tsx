@@ -35,4 +35,4 @@ const EmptyStyle = styled.div`
     }
 `
 
-export default Empty
+export default Empty;
