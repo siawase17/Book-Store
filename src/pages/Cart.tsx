@@ -106,8 +106,7 @@ const Cart = () => {
 export const CartStyle = styled.div`
     display: flex;
     gap: 24px;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
     padding: 24px 0 0 0;
 
     .content {

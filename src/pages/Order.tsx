@@ -26,7 +26,6 @@ const Order = () => {
     const { register, handleSubmit, setValue, formState: { errors }, } = useForm<DeliveryForm>();
 
     const handlePay = (data: DeliveryForm) => {
-        console.log(data);
         const orderData: OrderSheet = {
             ...orderDataFromCart,
             user: {
