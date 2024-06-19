@@ -1,18 +1,24 @@
 import { useEffect, useState } from "react";
-import { BookDetail } from "../models/book.model";
+import { BookDetail, BookReviewItem } from "../models/book.model";
 import { fetchBook, likeBook, removeBook } from "../api/books.api";
 import { useAuthStore } from "../store/authStore";
 import { useAlert } from "./useAlert";
 import { addCart } from "../api/cart.api";
+import { fetchBookReview } from "@/api/review.api";
 
 export const useBook = (bookId: string | undefined) => {
     const [book, setBook] = useState<BookDetail | null>(null);
+    const [reviews, setReviews] = useState<BookReviewItem[]>([]);
 
     useEffect(() => {
         if (!bookId) return;
 
         fetchBook(bookId).then((book) => {
             setBook(book);
+        })
+
+        fetchBookReview(bookId).then((reviews) => {
+            setReviews(reviews);
         })
     }, [bookId]);
 
@@ -56,5 +62,5 @@ export const useBook = (bookId: string | undefined) => {
         });
     };
 
-    return { book, likeToggle, addToCart, cartAdded };
+    return { book, likeToggle, addToCart, cartAdded, reviews };
 };

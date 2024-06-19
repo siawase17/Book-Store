@@ -1,6 +1,9 @@
 import dayjs from "dayjs";
 
 export const formatNumber = (number: number) => {
+    if (number === undefined || number === null) {
+        return '';
+    }
     return number.toLocaleString();
 };
 

@@ -29,6 +29,8 @@ const AddToCart = ({ book }: Props) => {
         setQuantity(quantity - 1);
     };
 
+    if (!book) return null;
+
     return (
         <AddToCartStyle $added={cartAdded}>
             <div className='quantity'>
