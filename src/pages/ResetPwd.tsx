@@ -7,6 +7,7 @@ import { resetPwd, resetRequest, signup } from '../api/auth.api'
 import { useAlert } from '../hooks/useAlert'
 import { SignupStyle } from './Signup'
 import { useState } from 'react'
+import { useAuth } from '@/hooks/useAuth';
 
 export interface SignupProps {
     email: string;
@@ -14,9 +15,7 @@ export interface SignupProps {
 }
 
 const ResetPwd = () => {
-    const navigate = useNavigate();
-    const { showAlert } = useAlert();
-    const [resetRequested, setResetRequested] = useState(false);
+    const { userResetPwd, userResetRequest, resetRequested } = useAuth();
 
     const {
         register,
@@ -25,18 +24,8 @@ const ResetPwd = () => {
     } = useForm<SignupProps>();
 
     const onSubmit = (data: SignupProps) => {
-        if (resetRequested) {
-            // 초기화
-            resetPwd(data).then(() => {
-                showAlert('비밀번호가 초기화되었습니다.');
-                navigate('/login');
-            });
-        } else {
-            // 요청
-            resetRequest(data).then(() => {
-                setResetRequested(true);
-            });
-        }
+        resetRequested ? userResetPwd(data)
+            : userResetRequest(data);;
     };
 
     return (
