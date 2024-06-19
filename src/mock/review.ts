@@ -1,6 +1,6 @@
 import { BookReviewItem } from '@/models/book.model';
 import { http, HttpResponse } from 'msw';
-import { faker } from '@faker-js/faker';
+import { fakerKO as faker } from '@faker-js/faker';
 
 // const mockReviewsData: BookReviewItem[] = [
 //     {
