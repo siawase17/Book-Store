@@ -35,8 +35,12 @@ const BookItem = ({ book, view }: Props) => {
 
 const BookItemStyle = styled.div<Pick<Props, 'view'>>`
     display: flex;
-    flex-direction: ${({ view }) => (view === 'grid' ? 'column' : 'row')};
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+
+    a {
+        display: flex;
+        flex-direction: ${({ view }) => (view === 'grid' ? 'column' : 'row')};
+    }
 
     .img {
         border-radius: ${({ theme }) => theme.borderRadius.default};
@@ -72,6 +76,7 @@ const BookItemStyle = styled.div<Pick<Props, 'view'>>`
             color: ${({ theme }) => theme.color.secondary};
             margin: 10px 0 4px 0;
             font-weight: 700;
+            margin-right: 80px;
         }
         .likes {
             display: inline-flex;
