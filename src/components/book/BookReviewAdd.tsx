@@ -36,7 +36,7 @@ const BookReviewAdd = ({ onAdd }: Props) => {
                             <option value="5">5점</option>
                         </select>
                     </fieldset>
-                    <Button size="medium" scheme="primary">
+                    <Button size="small" scheme="primary">
                         작성하기
                     </Button>
                 </div>
@@ -71,14 +71,19 @@ const BookReviewAddStyle = styled.div`
             width: 100%;
             height: 100px;
             border-radius: ${({ theme }) => theme.borderRadius.default};
-            border: 1px solid ${({ theme }) => theme.color.border};
+            border: 1px solid #ddd;
+            outline-color: #c5c5c5;
             padding: 12px;
+            resize: none;
         }
+
     }
 
     .submit {
         display: flex;
+        gap: 15px;
         justify-content: end;
+        margin-top: 5px;
     }
 `
 
