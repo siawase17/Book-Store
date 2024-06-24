@@ -11,6 +11,8 @@ import LikeButton from '../components/book/LikeButton';
 import AddToCart from '../components/book/AddToCart';
 import BookReview from '@/components/book/BookReview';
 import { Tab, Tabs } from '@/components/common/Tabs';
+import Modal from '@/components/common/Modal';
+import { useState } from 'react';
 
 const bookInfoList = [
     {
@@ -52,17 +54,19 @@ const bookInfoList = [
 const BookDetail = () => {
     const { bookId } = useParams();
     const { book, likeToggle, reviews, addReview } = useBook(bookId);
-
-    console.log(reviews)
+    const [isImgOpen, setIsImgOpen] = useState(false);
 
     if (!book) return null;
 
     return (
         <BookDetailStyle>
             <header className="header">
-                <div className="img">
+                <div className="img" onClick={() => { if (!isImgOpen) setIsImgOpen(true); }}>
                     <img src={getImgSrc(book.img)} alt={book.title} />
                 </div>
+                <Modal isOpen={isImgOpen} onClose={() => setIsImgOpen(false)}>
+                    <img src={getImgSrc(book.img)} alt={book.title} />
+                </Modal>
                 <div className="info">
                     <Title size='large' color='text'>{book.title}</Title>
                     {bookInfoList.map((item) => (
