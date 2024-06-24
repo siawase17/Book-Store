@@ -84,6 +84,17 @@ const BookReviewAddStyle = styled.div`
         gap: 15px;
         justify-content: end;
         margin-top: 5px;
+
+        select {
+            padding: 10.5px 9px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: ${({ theme }) => theme.borderRadius.default};
+
+            option {
+                padding: 5px;
+            }
+        }
     }
 `
 
