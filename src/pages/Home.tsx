@@ -1,11 +1,13 @@
-import Button from "../components/common/Button";
-import InputText from "../components/common/InputText";
-import Title from "../components/common/Title";
+import MainReview from "@/components/main/MainReview";
+import { useMain } from "@/hooks/useMain";
+
 
 const Home = () => {
+    const { reviews } = useMain();
+
     return (
         <>
-            <div>Home</div>
+            <MainReview reviews={reviews} />
         </>
     )
 };
