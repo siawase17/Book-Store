@@ -33,7 +33,7 @@ const BookItem = ({ book, view }: Props) => {
     )
 };
 
-const BookItemStyle = styled.div<Pick<Props, 'view'>>`
+export const BookItemStyle = styled.div<Pick<Props, 'view'>>`
     display: flex;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
 

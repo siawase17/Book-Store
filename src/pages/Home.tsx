@@ -3,15 +3,19 @@ import styled from "styled-components";
 import MainReview from "@/components/main/MainReview";
 import { useMain } from "@/hooks/useMain";
 import MainNewBooks from "@/components/main/MainNewBooks";
+import MainBest from "@/components/main/MainBest";
+import Banner from "@/components/common/banner/Banner";
 
 
 const Home = () => {
-    const { reviews, newBooks } = useMain();
+    const { reviews, newBooks, bestBooks, banners } = useMain();
 
     return (
         <HomeStyle>
+            <Banner banners={banners} />
             <section className="section">
                 <Title size="large">베스트 셀러</Title>
+                <MainBest books={bestBooks} />
             </section>
             <section className="section">
                 <Title size="large">신간 안내</Title>
@@ -26,7 +30,9 @@ const Home = () => {
 };
 
 const HomeStyle = styled.div`
-    
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
 `
 
 export default Home;

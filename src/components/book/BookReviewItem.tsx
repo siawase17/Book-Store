@@ -41,6 +41,7 @@ const BookReviewItemStyle = styled.div`
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
     padding: 12px;
     border-radius: ${({ theme }) => theme.borderRadius.default};
+    height: 11rem;
 
     .header {
         display: flex;
