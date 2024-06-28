@@ -23,6 +23,7 @@ export const useMain = () => {
             limit: 4,
         }).then(({ books }) => {
             setNewBooks(books);
+            console.log(books)
         });
 
         fetchBestBooks().then((books) => {

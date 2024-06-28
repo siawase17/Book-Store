@@ -6,19 +6,22 @@ import 'slick-carousel/slick/slick-theme.css';
 import styled from 'styled-components';
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { CustomArrowProps } from 'react-slick';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 interface Props {
     reviews: IBookReviewItem[];
 }
 
 const MainReview = ({ reviews }: Props) => {
+    const { isMobile } = useMediaQuery();
+
     const sliderSettings = {
         dots: false,
         infinite: true,
         autoplay: true,
         autoplaySpeed: 5000,
         speed: 700,
-        slidesToShow: 3,
+        slidesToShow: isMobile ? 1 : 3,
         slidesToScroll: 1,
         gap: 16,
         cssEase: "linear",
@@ -29,9 +32,9 @@ const MainReview = ({ reviews }: Props) => {
     return (
         <MainReviewStyle>
             <Slider {...sliderSettings}>
-            {reviews.map((review) => (
-                <BookReviewItem key={review.id} review={review} />
-            ))}
+                {reviews.map((review) => (
+                    <BookReviewItem key={review.id} review={review} />
+                ))}
             </Slider>
         </MainReviewStyle>
     )
@@ -58,7 +61,7 @@ const CustomNextArrow: React.FC<CustomArrowProps> = (props) => {
         />
     );
 };
-const MainReviewStyle = styled.div `
+const MainReviewStyle = styled.div`
     padding: 0 0 24px 0;
 
     .slick-track {
@@ -72,6 +75,16 @@ const MainReviewStyle = styled.div `
     .slick-prev:before,
     .slick-next:before {
         color: #000;
+    }
+
+    @media screen and (${({ theme }) => theme.mediaQuery.mobile}) {
+        .slick-prev {
+            left: -10px;
+        }
+
+        .slick-next {
+            right: -10px;
+        }
     }
 `
 

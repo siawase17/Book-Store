@@ -41,9 +41,9 @@ const Banner = ({ banners }: Props) => {
             </BannerButtonStyle>
             <BannerIndicatorStyle>
                 {banners.map((banner, index) => (
-                    <span 
-                    className={index === cur_index ? 'active' : ''}
-                    onClick={() => handleIndicatorClick(index)}
+                    <span
+                        className={index === cur_index ? 'active' : ''}
+                        onClick={() => handleIndicatorClick(index)}
                     ></span>
                 ))}
             </BannerIndicatorStyle>
@@ -94,10 +94,24 @@ const BannerButtonStyle = styled.div`
         &.next {
             right: 10px;
         }
+
+        @media screen and (${({ theme }) => theme.mediaQuery.mobile}) {
+            width: 25px;
+            height: 25px;
+            font-size: 1.2rem;
+
+            &.prev {
+                left: 0;
+            }
+
+            &.next {
+                right: 0;
+            }
+        }
     }
 `
 
-const BannerIndicatorStyle = styled.div `
+const BannerIndicatorStyle = styled.div`
     position: absolute;
     bottom: 10px;
     left: 50%;
@@ -113,10 +127,20 @@ const BannerIndicatorStyle = styled.div `
         cursor: pointer;
 
         &.active {
-            background: ${({theme}) => theme.color.primary};
+            background: ${({ theme }) => theme.color.primary};
         }
     }
 
+    @media screen and (${({ theme }) => theme.mediaQuery.mobile}) {
+        bottom: 0;
+        span {
+            width: 10px;
+            height: 10px;
+            &.active {
+            width: 20px;
+        }
+        }
+    }
 `
 
-export default Banner
+export default Banner;

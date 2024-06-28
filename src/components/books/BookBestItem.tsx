@@ -1,5 +1,4 @@
-import { Book } from '@/models/book.model'
-import React from 'react'
+import { Book } from '@/models/book.model';
 import BookItem, { BookItemStyle } from './BookItem';
 import styled from 'styled-components';
 
